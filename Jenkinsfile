@@ -23,7 +23,7 @@ pipeline{
 		stage ('Nexus_Chef') {
 			when { expression { params.upstreamJob != 'destroy' }}
 			steps {
-				build 'Nexus-Chef/feature%2Fgenesis'
+				//build 'Nexus-Chef/feature%2Fgenesis'
 			}
 		}
 		
