@@ -58,7 +58,7 @@ pipeline{
 		
 		post {
 			always {
-				archiveArtifacts(artifacts: "nexus_output.tfvars", fingerrprint: false)
+				archiveArtifacts(artifacts: "nexus_output.tfvars", fingerprint: false)
 			}
 		}													
 								 
