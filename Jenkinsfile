@@ -11,10 +11,10 @@ pipeline{
 				script {
 					// Call job populateInput to populate genesis.tfvars file & placeholders
 					build job: '/populateInput', parameters:
-						[[$class: 'StringParameterValue', name: 'workspace_dir', value: env['WORKSPACE']],
+						//[[$class: 'StringParameterValue', name: 'workspace_dir', value: env['WORKSPACE']],
 						 [$class: 'StringParameterValue', name: 'master_config', value: params['master_config']]
 						 [$class: 'StringParameterValue', name: 'pipeline_config', value: params['pipeline_config']]
-						 [$class: 'StringParameterValue', name: 'pipeline_default_config', value: 'default_nexus_configuration']]
+						// [$class: 'StringParameterValue', name: 'pipeline_default_config', value: 'default_nexus_configuration']]
 						 wait:true
 				}
 			}
