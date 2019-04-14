@@ -11,8 +11,20 @@ pipeline{
 				// Every stage must have a steps block containing at least one step.
                 steps {
                     // Get some code from a GitHub repository
-                    println "I am in the stage - Preparation "
+                    println "I am in the stage - Preparation stage ..... "
                     git 'https://github.com/duggidk/AWS-CodePipeline.git'
+                }
+		}
+		stage("Plan") {
+				// Every stage must have a steps block containing at least one step.
+                steps {
+                    // Get some code from a GitHub repository
+                    println "I am in the stage - Plan stage.... "
+                    git 'https://github.com/duggidk/AWS-CodePipeline.git'
+                    
+                    script{
+                    	sh 'terraform init'
+                    }
                 }
 		}
 		
