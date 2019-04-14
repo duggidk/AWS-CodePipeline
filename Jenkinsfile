@@ -16,13 +16,7 @@ pipeline{
                 }
 		}
 		
-		stage('Build') {
-                steps {
-                // Run the maven build
-                
-                   bat(/"${mvnHome}\bin\mvn" clean test -Dtest=TestRunner/)stage('Results') 
-                }
-        }           
+		          
 		
 		stage ('Input') {
 			steps {
