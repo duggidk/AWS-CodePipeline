@@ -24,8 +24,8 @@ pipeline{
 				// Every stage must have a steps block containing at least one step.
                 steps {
                     // Get some code from a GitHub repository
-                    println"I am in the stage - Preparation "
-                    git 'https://github.com/duggidk/AWS-CodePipeline.git'
+                    println "I am in the stage - Preparation "
+                    //git 'https://github.com/duggidk/AWS-CodePipeline.git'
                 }
 		}
 		
