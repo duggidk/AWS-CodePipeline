@@ -20,47 +20,7 @@ pipeline{
 			}
 		}
 		
-		stage ('Nexus_Chef') {
-			when { expression { params.upstreamJob != 'destroy' }}
-			steps {
-				build 'Nexus-Chef/feature%2Fgenesis'
-			}
-		}
-		
-		stage ('Plan') {
-			when { expression {params.upstreamJob != 'destroy' }}
-			steps {
-				script{
-					sh 'terraform init'
-					sh 'terraform plan -var-file=genesis.tfvars'
-				}
-			}
-		}
-		
-		stage ('Output') {
-			when { expression { params.upstreamJob != 'destroy'}}
-			steps {
-				script {
-					sh 'terraform output > nexus_output.tfvars'
-				}
-			}
-		}
-		
-		stage ('Destroy') {
-			when { expression {params.upstreamJob == 'destroy' }}
-			steps {
-				script {
-					sh 'terraform destroy -var-file=genesis.tfvars -input=false -auto-approve'
-				}
-			}
-		}
-	}	
-		
-		post {
-			always {
-				archiveArtifacts(artifacts: "nexus_output.tfvars", fingerprint: false)
-			}
-		}													
+											
 								 
     
    } 						 		
