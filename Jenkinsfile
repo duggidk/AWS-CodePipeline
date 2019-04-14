@@ -10,14 +10,23 @@ pipeline{
 			steps {
 				script {
 					// Call job populateInput to populate genesis.tfvars file & placeholders
+					println"I am in Input stage. "
 					build job: '/populateInput', parameters:
 						//[[$class: 'StringParameterValue', name: 'workspace_dir', value: env['WORKSPACE']],
-						 [$class: 'StringParameterValue', name: 'master_config', value: parameters ['master_config']]
-						 [$class: 'StringParameterValue', name: 'pipeline_config', value: parameters['pipeline_config']]
+						 [$class: 'StringParameterValue', name: 'master_config', value: params ['master_config']]
+						 [$class: 'StringParameterValue', name: 'pipeline_config', value: params['pipeline_config']]
 						// [$class: 'StringParameterValue', name: 'pipeline_default_config', value: 'default_nexus_configuration']]
 						 wait:true
 				}
 			}
+		}
+		stage("Preparation") {
+				// Every stage must have a steps block containing at least one step.
+                steps {
+                    // Get some code from a GitHub repository
+                    println"I am in the stage - Preparation "
+                    git 'https://github.com/duggidk/AWS-CodePipeline.git'
+                }
 		}
 		
 	}										
