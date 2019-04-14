@@ -54,11 +54,12 @@ pipeline{
 				}
 			}
 		}
-		post {
-			always {
-				archiveArtifacts(artifacts: "nexus_output.tfvars", fingerrprint: false)
-			}
-		}													
+		
+		//post {
+			//always {
+				//archiveArtifacts(artifacts: "nexus_output.tfvars", fingerrprint: false)
+			//}
+		//}													
 								 
     }
    } 						 		
